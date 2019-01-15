@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/jquery.min.js"></script>
+    <title>峰哥的个人博客</title>
+	</head>
+  <body>
+  	<div class="home">
+  		<%- include('../public/header.ejs') %>
+	    <!-- 撰写文章 -->
+	    <div class="write">
+	    	<form>
+	    		<input type="text" name="title" id="title" placeholder="请输入文章标题" required="required"/>
+	    		<div class="content">
+            <div id='editor' contenteditable></div>
+	        </div>
+	    		<input type="submit" class="editBtn" value="发 布" />
+	    	</form>
+	    </div>
+		</div>
+  </body>
+  <script>
+    $(function() {
+        $('.editBtn').click(function(event){
+        	event.preventDefault();
+        	if($('#title').val()=='' || $('#editor').html()==''){
+        		alert('文章标题或内容不能为空');
+        	}else{
+        		$.ajax({
+					   	url: 'http://47.105.173.9:3000/ajax_edit',
+						  type:'POST',
+						  data:{
+						   	articleTitle:$('#title').val(),
+						   	articleContent:$('#editor').html()
+						  },
+						  success: function(data){
+						    if(data.page){
+						    	alert('发表成功！');
+						    	window.location.href=data.page;
+						    }
+						  }
+						});
+        	}
+        });
+    });
+</script>
+</html>

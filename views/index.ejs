@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta http-equiv="description" content="峰哥-学前端-路漫漫" />
+		<meta name="description" content="峰哥的个人博客" />
+		<meta name="keywords" content="峰哥, 个人博客, 个人网站,首页, web前端,JavaScript,css,html" />
+		<meta name="author" content="峰哥,feng_ge" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/jquery.min.js"></script>
+    <title>峰哥的个人博客</title>
+	</head>
+  <body>
+  <!-- 这是主页面 -->
+  	<div class="home">
+  		<%- include('../public/header.ejs') %>
+	    <!-- 文章列表 -->
+	    <div class="articles">
+	    	<ul>
+	    		<% for(var i=articles.length-1;i>=0;i--){ %>
+	    		<li class="article-item">
+	    			<% var href = 'http://47.105.173.9:3000/articles/'+articles[i].articleID %>
+	    			<p><a href="<%= href %>"><%= articles[i].articleTitle %></a></p>
+		    		<section class="article-des">
+		    			<p>
+		    				<span>作者：<i><%= articles[i].articleAuthor %></i></span>
+		    				<span>发布时间：<i><%= articles[i].articleTime %></i></span>
+		    				<span>浏览量：<%= articles[i].articleClick %></span>
+		    			</p>
+		    		</section>
+	    		</li>
+	    		<% } %>
+	    	</ul>
+	    </div>
+		</div>
+  </body>
+  <script type="text/javascript"> 
+	</script> 
+</html>

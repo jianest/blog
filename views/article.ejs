@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/jquery.min.js"></script>
+    <title>峰哥的个人博客</title>
+	</head>
+  <body>
+  	<div class="home">
+  		<%- include('../public/header.ejs') %>
+	    <!-- 文章内容页 -->
+	    <div class="article">
+	    	<div class="article-title">
+	    		<p><%= article.articleTitle %></p>
+	    		<p>
+    				<span>
+    					作者：<%= article.articleAuthor %>
+    				</span>
+    				<span>
+    					发布时间：<%= article.articleTime %>
+    				</span>
+    				<span>
+    					浏览量：<%= article.articleClick %>
+    				</span>
+    			</p>
+	    	</div>
+	    	<div class="article-content">
+<pre></pre>
+	    	</div>
+	    </div>
+		</div>
+  </body>
+  <script type="text/javascript">
+  	$(function(){
+  		var content = '<%= article.articleContent %>';
+  		//↓字符串转译成html标签
+  		function escapeStringHTML(str) {
+			    str = str.replace(/&lt;/g,'<');
+			    str = str.replace(/&gt;/g,'>');
+			    str = str.replace(/&#34;/g,'"');
+			    return str;
+			}
+  		$('.article-content pre').html(escapeStringHTML(content));
+  	});
+  </script>
+</html>

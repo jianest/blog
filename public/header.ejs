@@ -1,0 +1,15 @@
+<div class="page-top">
+	<div class="page-title">
+		<p>学前端 路漫漫</p>
+	</div>
+	<div class="nav">
+		<a href="http://47.105.173.9:3000"><img src="/images/home.png" />博客首页</a>
+		<a href="http://47.105.173.9:3000/about"><img src="/images/about.png" />关于博客</a>
+		<a href="http://47.105.173.9:3000/edit"><img src="/images/write.png" />撰写文章</a>
+		<% if(isLogin){ %>
+			<span id="logOut"><a href="http://47.105.173.9:3000/logout">退出登录</a><strong>[ <%= username %> ]</strong> </span>
+		<% }else{ %>
+			<span id="nolog"><a href="http://47.105.173.9:3000/login"><img src="/images/login.png" />用户登录</a><strong>[ 未登录 ]</strong></span>
+		<% } %>
+	</div>
+</div>
